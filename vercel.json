@@ -1,0 +1,7 @@
+{
+	"rewrites": [
+		{ "source": "/webpack/:path*", "destination": "/project-webpack/dist/:path*" },
+		{ "source": "/api/:path*", "destination": "/project-express/index.js" },
+		{ "source": "/(.*)", "destination": "/project-vue/dist/$1" }
+	]
+}
