@@ -1,7 +1,13 @@
 {
-	"rewrites": [
-		{ "source": "/webpack/:path*", "destination": "/project-webpack/dist/:path*" },
-		{ "source": "/api/:path*", "destination": "/project-express/index.js" },
-		{ "source": "/(.*)", "destination": "/project-vue/dist/$1" }
+	"version": 2,
+	"builds": [
+		{ "src": "project-vue/package.json", "use": "@vercel/static-build" },
+		{ "src": "project-webpack/package.json", "use": "@vercel/static-build" },
+		{ "src": "project-express/index.js", "use": "@vercel/node" }
+	],
+	"routes": [
+		{ "src": "/webpack(.*)", "dest": "/project-webpack/dist$1" },
+		{ "src": "/api/(.*)", "dest": "/project-express/index.js" },
+		{ "src": "/(.*)", "dest": "/project-vue/dist/$1" }
 	]
 }
