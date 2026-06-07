@@ -32,14 +32,14 @@ app.use((req, res) => {
 			}
 		})
 	} else {
-		res.send('404 - 请配置 404 页面')
+		res.send('404 - 请配置 404 页面 - Project B')
 	}
 })
 
 // 错误处理
 app.use((err, req, res, next) => {
 	console.error(err.stack)
-	res.status(500).send('500 - 服务器内部错误')
+	res.status(500).send('500 - 服务器内部错误 - Project B')
 })
 
 const PORT = process.env.PORT || 3000
