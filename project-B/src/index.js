@@ -14,7 +14,7 @@ app.use(express.json())
 // API 路由，使用 .env 中的 BASE_URL 作为前缀
 const baseUrl = process.env.BASE_URL || '/'
 app.get(`${baseUrl}`, (req, res) => {
-	res.send('Hello Express! - Project B')
+	res.send(`Hello Express! - ${baseUrl}`)
 })
 app.use(`${baseUrl}api/user`, require('./api/user'))
 
