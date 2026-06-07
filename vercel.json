@@ -2,23 +2,30 @@
 	"version": 2,
 	"builds": [
 		{
-			"src": "project-vue/package.json",
-			"use": "@vercel/static-build",
-			"config": { "distDir": "dist" }
+			"src": "project-A/app.js",
+			"use": "@vercel/node"
 		},
 		{
-			"src": "project-webpack/package.json",
-			"use": "@vercel/static-build",
-			"config": { "distDir": "dist" }
-		},
-		{
-			"src": "project-express/index.js",
+			"src": "project-B/app.js",
 			"use": "@vercel/node"
 		}
 	],
-	"routes": [
-		{ "src": "/webpack(/.*)", "dest": "/project-webpack/dist$1" },
-		{ "src": "/api(/.*)", "dest": "/project-express/index.js" },
-		{ "src": "/(.*)", "dest": "/project-vue/dist/$1" }
+	"rewrites": [
+		{
+			"source": "/project-A/",
+			"destination": "/project-A/app.js"
+		},
+		{
+			"source": "/project-A/:path*",
+			"destination": "/project-A/app.js"
+		},
+		{
+			"source": "/project-B/",
+			"destination": "/project-B/app.js"
+		},
+		{
+			"source": "/project-B/:path*",
+			"destination": "/project-B/app.js"
+		}
 	]
 }
